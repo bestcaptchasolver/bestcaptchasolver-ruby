@@ -67,6 +67,8 @@ puts "Gresponse: %s" % [bcs.retrieve(id)['gresponse']]      # or ['text'] if ima
 
 This method returns an object, with the `text` attribute for image captcha or `gresponse` if submission was done for reCAPTCHA
 
+The returned object also contains a `proxy_status` attribute, which will tell if any proxy was used in completion, and if not, why
+
 **Affiliate ID**
 
 ```ruby
