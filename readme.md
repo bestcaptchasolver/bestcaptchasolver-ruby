@@ -78,7 +78,7 @@ d['challenge'] = 'CHALLENGE_HERE'
 id = bcs.submit_geetest d
 ```
 
-Use id of captcha to retrieve `solution` for geetest
+Use id of captcha to retrieve `solution` for GeeTest
 
 **Capy**
 - page_url
@@ -92,7 +92,21 @@ d['site_key'] = 'SITE_KEY_HERE'
 id = bcs.submit_capy d
 ```
 
-Use if of captcha to retrieve `solution` for capy
+Use id of captcha to retrieve `solution` for Capy
+
+**hCaptcha**
+- page_url
+- site_key
+
+```ruby
+d = {}
+d['page_url'] = 'PAGE_URL_HERE'
+d['site_key'] = 'SITE_KEY_HERE'
+# d['affiliate_id'] = 'ID of affiliate'   # optional
+id = bcs.submit_hcaptcha d
+```
+
+Use id of captcha to retrieve `solution` for hCaptcha
 
 **Retrieve**
 
