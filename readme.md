@@ -55,6 +55,7 @@ d['site_key'] = '6LfGJmcUAAAAALGtIb_FxC0LXm_GwOLyJAfbbUCN'
 # d['type'] = 3    # optional, defaults to 1, 1 - normal, 2 - invisible, 3 - v3
 # d['v3_min_score'] = 0.3          # min score to target when solving v3 - optional
 # d['v3_action'] = 'homepage'      # action to use when solving v3 - optional
+# d['data_s'] = 'recaptcha data-s parameter used in loading reCAPTCHA' # - optional
 # d['proxy'] = '126.45.34.53:123'  # - HTTP proxy - optional
 # d['user_agent'] = 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0' # optional
 # d['affiliate_id'] = 'ID of affiliate'   # optional
