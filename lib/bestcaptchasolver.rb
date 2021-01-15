@@ -3,12 +3,9 @@ require 'base64'
 require 'json'
 require 'uri'
 
-# endpoints
-# -------------------------------------------------------------------------------------------
 BASE_URL = 'https://bcsapi.xyz/api'
 
 # user agent used in requests
-# ---------------------------
 USER_AGENT = 'rubyAPI1.0'
 
 # main class
