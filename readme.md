@@ -114,6 +114,20 @@ d['site_key'] = 'SITE_KEY_HERE'
 id = bcs.submit_hcaptcha d
 ```
 
+**FunCaptcha (Arkose Labs)**
+- page_url
+- site_key
+
+```ruby
+  d = {}
+d['page_url'] = 'https://abc.com'
+d['s_url'] = 'https://api.arkoselabs.com'
+d['site_key'] = '11111111-1111-1111-1111-111111111111'
+# d['data'] = '{"x":"y"}' # optional, extra JSON data used in loading
+# d['affiliate_id'] = 'ID of affiliate'   # optional
+id = bcs.submit_funcaptcha d
+```
+
 Use id of captcha to retrieve `solution` for hCaptcha
 
 **Retrieve**
