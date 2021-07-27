@@ -76,12 +76,14 @@ to get the gresponse
 - domain
 - gt
 - challenge
+- api_server (optional)
 
 ```ruby
 d = {}
 d['domain'] = 'DOMAIN_HERE'
 d['gt'] = 'GT_HERE'
 d['challenge'] = 'CHALLENGE_HERE'
+# d['api_server'] = 'GT_DOMAIN_HERE'      # optional
 # d['affiliate_id'] = 'ID of affiliate'   # optional
 id = bcs.submit_geetest d
 ```
