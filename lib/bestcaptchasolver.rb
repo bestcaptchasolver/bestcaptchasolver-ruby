@@ -87,6 +87,25 @@ class Bestcaptchasolver
     r['id']    # get ID
   end
 
+  # submit geetestv4
+  def submit_geetest_v4(d)
+    url = '%s/captcha/geetestv4' % [BASE_URL]
+    uri = URI.parse(url)
+    d["access_token"] = @_access_token
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    req = Net::HTTP::Post.new(uri.request_uri, @_headers)
+    res = http.request(req, URI.encode_www_form(d))
+
+    r = JSON.parse(res.body)
+    # check for error
+    if r.key? 'error'
+      raise(r['error'])
+    end
+    r['id']    # get ID
+  end
+
   # submit capy
   def submit_capy(d)
     url = '%s/captcha/capy' % [BASE_URL]
