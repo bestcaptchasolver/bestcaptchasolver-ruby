@@ -131,6 +131,11 @@ class Bestcaptchasolver
     uri = URI.parse(url)
     d["access_token"] = @_access_token
 
+    # set variables from JSON to string
+    if d.key? 'payload'
+      d['payload'] = JSON.generate(d['payload'])
+    end
+
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.request_uri, @_headers)

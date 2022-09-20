@@ -122,11 +122,17 @@ Use id of captcha to retrieve `solution` for Capy
 **hCaptcha**
 - page_url
 - site_key
+- invisible (optional)
+- payload, for enterprise (optional)
+- user_agent (optional)
 
 ```ruby
 d = {}
 d['page_url'] = 'PAGE_URL_HERE'
 d['site_key'] = 'SITE_KEY_HERE'
+# d['invisible'] = true
+# d['payload'] = {'rqdata': 'taken from web requests'}
+# d['user_agent'] = 'your user agent'
 # d['affiliate_id'] = 'ID of affiliate'   # optional
 id = bcs.submit_hcaptcha d
 ```
