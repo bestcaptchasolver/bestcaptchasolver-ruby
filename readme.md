@@ -151,7 +151,23 @@ d['site_key'] = '11111111-1111-1111-1111-111111111111'
 id = bcs.submit_funcaptcha d
 ```
 
-Use id of captcha to retrieve `solution` for hCaptcha
+**Task**
+- tmeplate_name
+- page_url
+- variables
+- proxy (optional)
+- user_agent (optional)
+
+```ruby
+d = {
+    'template_name': 'Login test page',
+    'page_url': 'https://bestcaptchasolver.com/automation/login',
+    'variables': {"username": "xyz", "password": "0000"},
+    # 'proxy': '126.45.34.53:345',   # or 126.45.34.53:123:joe:password
+    # 'user_agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0',    # optional
+}
+id = bcs.submit_task d
+```
 
 **Retrieve**
 
@@ -160,7 +176,7 @@ Retrieval is done by passing the ID for all captchas submitted
 ``` ruby
 puts "Gresponse: %s" % [bcs.retrieve(id)['gresponse']]      # recaptcha
 puts "Text: %s" % [bcs.retrieve(id)['text']]                # image
-puts "Solution: %s" % [bcs.retrieve(id)['solution']]       # geetest or capy
+puts "Solution: %s" % [bcs.retrieve(id)['solution']]       # geetest, capy, task
 ```
 
 This method returns an object, with the `text` attribute for image captcha or `gresponse` if submission was done for reCAPTCHA

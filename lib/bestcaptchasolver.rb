@@ -168,6 +168,30 @@ class Bestcaptchasolver
     r['id']    # get ID
   end
 
+  # submit task
+  def submit_task(d)
+    url = '%s/captcha/task' % [BASE_URL]
+    uri = URI.parse(url)
+    d["access_token"] = @_access_token
+
+    # set variables from JSON to string
+    if d.key? :variables
+      d[:variables] = JSON.generate(d[:variables])
+    end
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    req = Net::HTTP::Post.new(uri.request_uri, @_headers)
+    res = http.request(req, URI.encode_www_form(d))
+
+    r = JSON.parse(res.body)
+    # check for error
+    if r.key? 'error'
+      raise(r['error'])
+    end
+    r['id']    # get ID
+  end
+
   # retrieve captcha by ID
   def retrieve(id)
     url = '%s/captcha/%s?access_token=%s' % [BASE_URL, id, @_access_token]
