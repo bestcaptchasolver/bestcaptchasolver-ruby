@@ -4,6 +4,7 @@ require 'json'
 require 'uri'
 
 BASE_URL = 'https://bcsapi.xyz/api'
+USE_SSL = true
 
 # user agent used in requests
 USER_AGENT = 'rubyAPI1.0'
@@ -33,7 +34,7 @@ class Bestcaptchasolver
     uri = URI.parse(url)
     d["access_token"] = @_access_token
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http.use_ssl = USE_SSL
     req = Net::HTTP::Post.new(uri.request_uri, @_headers)
     res = http.request(req, URI.encode_www_form(d))
 
@@ -56,7 +57,7 @@ class Bestcaptchasolver
     end
 
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http.use_ssl = USE_SSL
     req = Net::HTTP::Post.new(uri.request_uri, @_headers)
     res = http.request(req, URI.encode_www_form(d))
 
@@ -75,7 +76,7 @@ class Bestcaptchasolver
     d["access_token"] = @_access_token
 
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http.use_ssl = USE_SSL
     req = Net::HTTP::Post.new(uri.request_uri, @_headers)
     res = http.request(req, URI.encode_www_form(d))
 
@@ -94,7 +95,7 @@ class Bestcaptchasolver
     d["access_token"] = @_access_token
 
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http.use_ssl = USE_SSL
     req = Net::HTTP::Post.new(uri.request_uri, @_headers)
     res = http.request(req, URI.encode_www_form(d))
 
@@ -113,7 +114,7 @@ class Bestcaptchasolver
     d["access_token"] = @_access_token
 
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http.use_ssl = USE_SSL
     req = Net::HTTP::Post.new(uri.request_uri, @_headers)
     res = http.request(req, URI.encode_www_form(d))
 
@@ -137,7 +138,7 @@ class Bestcaptchasolver
     end
 
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http.use_ssl = USE_SSL
     req = Net::HTTP::Post.new(uri.request_uri, @_headers)
     res = http.request(req, URI.encode_www_form(d))
 
@@ -156,7 +157,7 @@ class Bestcaptchasolver
     d["access_token"] = @_access_token
 
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http.use_ssl = USE_SSL
     req = Net::HTTP::Post.new(uri.request_uri, @_headers)
     res = http.request(req, URI.encode_www_form(d))
 
@@ -180,7 +181,28 @@ class Bestcaptchasolver
     end
 
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http.use_ssl = USE_SSL
+    req = Net::HTTP::Post.new(uri.request_uri, @_headers)
+    res = http.request(req, URI.encode_www_form(d))
+
+    r = JSON.parse(res.body)
+    # check for error
+    if r.key? 'error'
+      raise(r['error'])
+    end
+    r['id']    # get ID
+  end
+
+  # push variables for task
+  def task_push_variables(id, push_variables)
+    url = '%s/captcha/task/pushVariables/%s' % [BASE_URL, id]
+    uri = URI.parse(url)
+    d = {}
+    d["access_token"] = @_access_token
+    d["pushVariables"] = JSON.generate(push_variables)
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = USE_SSL
     req = Net::HTTP::Post.new(uri.request_uri, @_headers)
     res = http.request(req, URI.encode_www_form(d))
 
@@ -214,7 +236,7 @@ class Bestcaptchasolver
     d = {}
     d["access_token"] = @_access_token
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http.use_ssl = USE_SSL
     req = Net::HTTP::Post.new(uri.request_uri, @_headers)
     res = http.request(req, URI.encode_www_form(d))
 

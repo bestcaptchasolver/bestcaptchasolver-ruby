@@ -19,6 +19,10 @@ def test_api
   }
   id = bcs.submit_task d
 
+  # submit pushVariables while task is being solved by the worker
+  # very helpful, for e.g. in cases of 2FA authentication
+  # bcs.task_push_variables(id, {"tfa_code": "1532"})
+
   puts "Waiting for task to be solved ..."
   gresponse = nil
   while gresponse == nil  # while it"s still in progress
