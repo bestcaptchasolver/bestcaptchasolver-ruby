@@ -14,6 +14,7 @@ def test_api
   d['page_url'] = 'PAGE_URL_HERE'
   d['site_key'] = 'SITE_KEY_HERE'
   # d['invisible'] = true
+  # d['domain'] = 'challenges.cloudflare.com'    # domain used in loading hcaptcha interface, default: challenges.cloudflare.com - optional
   # d['payload'] = {'rqdata': 'taken from web requests'}
   # d['user_agent'] = 'your user agent'
   # d['affiliate_id'] = 'ID of affiliate'   # optional

@@ -28,6 +28,7 @@ def test_api
   #
   # d['v3_min_score'] = 0.3          # min score to target when solving v3 - optional
   # d['v3_action'] = 'homepage'      # action to use when solving v3 - optional
+  # d['domain'] = 'www.google.com'   # domain used in loading recaptcha interface, can be also: recaptcha.net - optional
   # d['data_s'] = 'recaptcha data-s parameter used in loading reCAPTCHA' # - optional
   # d['cookie_input'] = 'a=b;c=d'    # used in solving of reCAPTCHA - optional
   # d['proxy'] = '126.45.34.53:123'  # - HTTP proxy - optional
