@@ -13,7 +13,9 @@ def test_api
   d = {}
   d['page_url'] = 'PAGE_URL_HERE'
   d['site_key'] = 'SITE_KEY_HERE'
-  # d['affiliate_id'] = 'ID of affiliate'   # optional
+  # d['user_agent'] = 'your user agent'         # optional
+  # d['proxy'] = 'user:pass@123.45.67.89:3031'  # optional
+  # d['affiliate_id'] = 'ID of affiliate'       # optional
   id = bcs.submit_capy d
 
   puts "Waiting for capy to be solved ..."

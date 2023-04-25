@@ -78,14 +78,18 @@ to get the gresponse
 - gt
 - challenge
 - api_server (optional)
+- user_agent (optional)
+- proxy (optional)
 
 ```ruby
 d = {}
 d['domain'] = 'DOMAIN_HERE'
 d['gt'] = 'GT_HERE'
 d['challenge'] = 'CHALLENGE_HERE'
-# d['api_server'] = 'GT_DOMAIN_HERE'      # optional
-# d['affiliate_id'] = 'ID of affiliate'   # optional
+# d['api_server'] = 'GT_DOMAIN_HERE'           # optional
+# d['user_agent'] = 'your user agent'          # optional
+# d['proxy'] = 'user:pass@123.45.67.89:3031'   # optional
+# d['affiliate_id'] = 'ID of affiliate'        # optional
 id = bcs.submit_geetest d
 ```
 
@@ -94,6 +98,8 @@ Use id of captcha to retrieve `solution` for GeeTest
 **GeetestV4**
 - domain
 - captchaid
+- user_agent (optional)
+- proxy (optional)
 
 **Important:** This is not the captchaid that's in our system that you receive while submitting a captcha. Gather this from HTML source of page with geetestv4 captcha, inside the `<script>` tag you'll find a link that looks like this: https://i.imgur.com/XcZd47y.png
 
@@ -101,6 +107,9 @@ Use id of captcha to retrieve `solution` for GeeTest
 d = {}
 d['domain'] = 'https://example.com'
 d['captchaid'] = '647f5ed2ed8acb4be36784e01556bb71'
+# d['user_agent'] = 'your user agent'          # optional
+# d['proxy'] = 'user:pass@123.45.67.89:3031'   # optional
+# d['affiliate_id'] = 'ID of affiliate'        # optional
 id = bcs.submit_geetest_v4 d
 ```
 
@@ -109,12 +118,16 @@ Use captcha_id received from service to retrieve `solution` for geetestv4
 **Capy**
 - page_url
 - site_key
+- user_agent (optional)
+- proxy (optional)
 
 ```ruby
 d = {}
 d['page_url'] = 'PAGE_URL_HERE'
 d['site_key'] = 'SITE_KEY_HERE'
-# d['affiliate_id'] = 'ID of affiliate'   # optional
+# d['user_agent'] = 'your user agent'         # optional
+# d['proxy'] = 'user:pass@123.45.67.89:3031'  # optional
+# d['affiliate_id'] = 'ID of affiliate'       # optional
 id = bcs.submit_capy d
 ```
 
@@ -127,6 +140,7 @@ Use id of captcha to retrieve `solution` for Capy
 - payload, for enterprise (optional)
 - domain (optional)
 - user_agent (optional)
+- proxy (optional)
 
 ```ruby
 d = {}
@@ -134,15 +148,19 @@ d['page_url'] = 'PAGE_URL_HERE'
 d['site_key'] = 'SITE_KEY_HERE'
 # d['invisible'] = true
 # d['payload'] = {'rqdata': 'taken from web requests'}
-# d['user_agent'] = 'your user agent'
-# d['domain'] = 'challenges.cloudflare.com'    # domain used in loading hcaptcha interface, default: challenges.cloudflare.com - optional
-# d['affiliate_id'] = 'ID of affiliate'   # optional
+# d['domain'] = 'hcaptcha.com'                 # domain used in loading hcaptcha interface, default: challenges.cloudflare.com - optional
+# d['user_agent'] = 'your user agent'          # optional
+# d['proxy'] = 'user:pass@123.45.67.89:3031'   # optional
+# d['affiliate_id'] = 'ID of affiliate'        # optional
 id = bcs.submit_hcaptcha d
 ```
 
 **FunCaptcha (Arkose Labs)**
 - page_url
 - site_key
+- data (optional)
+- user_agent (optional)
+- proxy (optional)
 
 ```ruby
   d = {}
@@ -150,7 +168,9 @@ d['page_url'] = 'https://abc.com'
 d['s_url'] = 'https://api.arkoselabs.com'
 d['site_key'] = '11111111-1111-1111-1111-111111111111'
 # d['data'] = '{"x":"y"}' # optional, extra JSON data used in loading
-# d['affiliate_id'] = 'ID of affiliate'   # optional
+# d['user_agent'] = 'your user agent'         # optional
+# d['proxy'] = 'user:pass@123.45.67.89:3031'  # optional
+# d['affiliate_id'] = 'ID of affiliate'       # optional
 id = bcs.submit_funcaptcha d
 ```
 
@@ -180,16 +200,17 @@ id = bcs.submit_turnstile d
 - tmeplate_name
 - page_url
 - variables
-- proxy (optional)
 - user_agent (optional)
+- proxy (optional)
 
 ```ruby
 d = {
     'template_name': 'Login test page',
     'page_url': 'https://bestcaptchasolver.com/automation/login',
     'variables': {"username": "xyz", "password": "0000"},
-    # 'proxy': '126.45.34.53:345',   # or 126.45.34.53:123:joe:password
     # 'user_agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0',    # optional
+    # 'proxy': '126.45.34.53:345',   # or joe:password@126.45.34.53:123 - optional
+    # 'affiliate_id': 'ID of affiliate'   # optional
 }
 id = bcs.submit_task d
 ```
@@ -215,7 +236,7 @@ Retrieval is done by passing the ID for all captchas submitted
 ``` ruby
 puts "Gresponse: %s" % [bcs.retrieve(id)['gresponse']]      # recaptcha
 puts "Text: %s" % [bcs.retrieve(id)['text']]                # image
-puts "Solution: %s" % [bcs.retrieve(id)['solution']]       # geetest, capy, task
+puts "Solution: %s" % [bcs.retrieve(id)['solution']]        # geetest, capy, task
 ```
 
 This method returns an object, with the `text` attribute for image captcha or `gresponse` if submission was done for reCAPTCHA

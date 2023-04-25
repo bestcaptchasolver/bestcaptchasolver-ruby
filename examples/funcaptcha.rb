@@ -15,7 +15,9 @@ def test_api
   d['s_url'] = 'https://api.arkoselabs.com'
   d['site_key'] = '11111111-1111-1111-1111-111111111111'
   # d['data'] = '{"x":"y"}' # optional, extra JSON data used in loading
-  # d['affiliate_id'] = 'ID of affiliate'   # optional
+  # d['user_agent'] = 'your user agent'         # optional
+  # d['proxy'] = 'user:pass@123.45.67.89:3031'  # optional
+  # d['affiliate_id'] = 'ID of affiliate'       # optional
   id = bcs.submit_funcaptcha d
 
   puts "Waiting for funcaptcha to be solved ..."

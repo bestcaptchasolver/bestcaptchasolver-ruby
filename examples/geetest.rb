@@ -14,8 +14,10 @@ def test_api
   d['domain'] = 'DOMAIN_HERE'
   d['gt'] = 'GT_HERE'
   d['challenge'] = 'CHALLENGE_HERE'
-  # d['api_server'] = 'GT_DOMAIN_HERE'      # optional
-  # d['affiliate_id'] = 'ID of affiliate'   # optional
+  # d['api_server'] = 'GT_DOMAIN_HERE'          # optional
+  # d['user_agent'] = 'your user agent'         # optional
+  # d['proxy'] = 'user:pass@123.45.67.89:3031'  # optional
+  # d['affiliate_id'] = 'ID of affiliate'       # optional
   id = bcs.submit_geetest d
 
   puts "Waiting for geetest to be solved ..."

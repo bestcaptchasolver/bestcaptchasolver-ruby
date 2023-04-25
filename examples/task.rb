@@ -14,8 +14,9 @@ def test_api
     'template_name': 'Login test page',
     'page_url': 'https://bestcaptchasolver.com/automation/login',
     'variables': {"username": "xyz", "password": "0000"},
-    # 'proxy': '126.45.34.53:345',   # or 126.45.34.53:123:joe:password
+    # 'proxy': '126.45.34.53:345',   # or 126.45.34.53:123:joe:password, optional
     # 'user_agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0',    # optional
+    # 'affiliate_id': 'ID of affiliate' # optional
   }
   id = bcs.submit_task d
 

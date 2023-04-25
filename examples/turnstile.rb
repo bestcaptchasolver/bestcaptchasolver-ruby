@@ -16,9 +16,9 @@ def test_api
   # d['action'] = 'taken from page source, optional'
   # d['cdata'] = 'taken from page source, optional'
   # d['domain'] = 'challenges.cloudflare.com'    # domain used in loading hcaptcha interface, default: challenges.cloudflare.com - optional
-  # d['user_agent'] = 'your user agent'
-  # d['affiliate_id'] = 'ID of affiliate'   # optional
-  # d['proxy'] = 'user:pass@123.45.67.89:3031'
+  # d['user_agent'] = 'your user agent'         # optional
+  # d['proxy'] = 'user:pass@123.45.67.89:3031'  # optional
+  # d['affiliate_id'] = 'ID of affiliate'       # optional
   id = bcs.submit_turnstile d
 
   puts "Waiting for turnstile to be solved ..."

@@ -13,7 +13,9 @@ def test_api
   d = {}
   d['domain'] = 'https://example.com'
   d['captchaid'] = '647f5ed2ed8acb4be36784e01556bb71'
-  # d['affiliate_id'] = 'ID of affiliate'   # optional
+  # d['user_agent'] = 'your user agent'         # optional
+  # d['proxy'] = 'user:pass@123.45.67.89:3031'  # optional
+  # d['affiliate_id'] = 'ID of affiliate'       # optional
   id = bcs.submit_geetest_v4 d
 
   puts "Waiting for geetestv4 to be solved ..."
