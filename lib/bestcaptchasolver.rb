@@ -169,6 +169,25 @@ class Bestcaptchasolver
     r['id']    # get ID
   end
 
+  # submit turnstile (cloudflare0)
+  def submit_turnstile(d)
+    url = '%s/captcha/turnstile' % [BASE_URL]
+    uri = URI.parse(url)
+    d["access_token"] = @_access_token
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = USE_SSL
+    req = Net::HTTP::Post.new(uri.request_uri, @_headers)
+    res = http.request(req, URI.encode_www_form(d))
+
+    r = JSON.parse(res.body)
+    # check for error
+    if r.key? 'error'
+      raise(r['error'])
+    end
+    r['id']    # get ID
+  end
+
   # submit task
   def submit_task(d)
     url = '%s/captcha/task' % [BASE_URL]

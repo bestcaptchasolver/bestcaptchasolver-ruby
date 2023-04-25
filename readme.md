@@ -154,6 +154,28 @@ d['site_key'] = '11111111-1111-1111-1111-111111111111'
 id = bcs.submit_funcaptcha d
 ```
 
+**Turnstile (Cloudflare)**
+- page_url
+- site_key
+- action (optional)
+- cdata (optional)
+- domain (optional)
+- user_agent (optional)
+- proxy (optional)
+
+```ruby
+d = {}
+d['page_url'] = 'PAGE_URL_HERE'
+d['site_key'] = 'SITE_KEY_HERE'
+# d['action'] = 'taken from page source'      # optional
+# d['cdata'] = 'taken from page source'       # optional
+# d['domain'] = 'challenges.cloudflare.com'   # optional
+# d['user_agent'] = 'your user agent'         # optional
+# d['proxy'] = 'user:pass@123.45.67.89:3031'  # optional
+# d['affiliate_id'] = 'ID of affiliate'       # optional
+id = bcs.submit_turnstile d
+```
+
 **Task**
 - tmeplate_name
 - page_url
