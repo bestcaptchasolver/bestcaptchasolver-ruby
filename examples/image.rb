@@ -38,7 +38,7 @@ def main
   begin
     test_api
   rescue => details
-    puts "[!] Error occured: #{details}"
+    puts "[!] Error occurred: #{details}"
   end
 end
 
